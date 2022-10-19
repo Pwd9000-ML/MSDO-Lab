@@ -9,8 +9,9 @@ jobs:
     # macos-latest supporting coming soon
     runs-on: windows-latest
 
-  steps:
-    - uses: actions/checkout@v2
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
 
     # Run MSDO analyzers
     - name: Run Microsoft Security DevOps Analysis
@@ -20,10 +21,9 @@ jobs:
         terrascan_scan: 'scan'
         terrascan_outputtype: 'sarif'
         terrascan_iacdir: '01_Foundation'
-      
 
-  # Upload alerts to the Security tab
-  - name: Upload alerts to Security tab
-    uses: github/codeql-action/upload-sarif@v1
-    with:
-      sarif_file: ${{ steps.msdo.outputs.sarifFile }}
+    # Upload alerts to the Security tab
+    - name: Upload alerts to Security tab
+      uses: github/codeql-action/upload-sarif@v1
+      with:
+        sarif_file: ${{ steps.msdo.outputs.sarifFile }}
