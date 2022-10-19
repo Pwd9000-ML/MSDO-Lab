@@ -5,7 +5,6 @@ on:
 
 jobs:
   MSDO:
-
     # MSDO runs on windows-latest and ubuntu-latest.
     # macos-latest supporting coming soon
     runs-on: windows-latest
